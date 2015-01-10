@@ -16,35 +16,28 @@ power$Sub_metering_2 <- as.numeric(power$Sub_metering_2)
 power$Sub_metering_3 <- as.numeric(power$Sub_metering_3)
 
 par(mfrow = c(2, 2))
+par(cex = 0.75)
 
-# Global Active Power (kilowatts)
-with(power, 
+# Global Active Power
+with(power,
      plot(datetime, Global_active_power,
           type = 'l',
           xlab = '',
-          ylab = 'Global Active Power (kilowatts)'))
+          ylab = 'Global Active Power'))
 
 # Voltage
 with(power, plot(datetime, Voltage, type = 'l'))
 
-# Submetering
-plot(power$datetime,
-     power$Sub_metering_1,
-     type = 'n',
-     xlab = '',
-     ylab = 'Energy sub metering')
-points(power$datetime,
-       power$Sub_metering_1,
-       type = 'l')
-points(power$datetime,
-       power$Sub_metering_2,
-       type = 'l',
-       col = 'red')
-points(power$datetime,
-       power$Sub_metering_3,
-       type = 'l',
-       col = 'blue')
-legend('topright', lwd = 1,
+# Sub-metering
+with(power,
+     plot(datetime, Sub_metering_1,
+          type = 'n',
+          xlab = '',
+          ylab = 'Energy sub metering'))
+with(power, points(datetime, Sub_metering_1, type = 'l'))
+with(power, points(datetime, Sub_metering_2, type = 'l', col = 'red'))
+with(power, points(datetime, Sub_metering_3, type = 'l', col = 'blue'))
+legend('topright', lwd = 1, bty = 'n',
        col = c('black', 'red', 'blue'),
        legend = c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'))
 
