@@ -5,26 +5,26 @@ endDate <- as.POSIXlt('2007-02-03')
 
 power <- read.table(fname, header = T, sep = ';', stringsAsFactors = F)
 power <- cbind(power,
-               'Date/Time' = strptime(paste(power$Date, power$Time), '%d/%m/%Y %H:%M:%S'))
-power <- power[which(power$'Date/Time' >= startDate), ]
-power <- power[which(power$'Date/Time' <= endDate), ]
+               datetime = strptime(paste(power$Date, power$Time), '%d/%m/%Y %H:%M:%S'))
+power <- power[which(power$datetime >= startDate), ]
+power <- power[which(power$datetime <= endDate), ]
 power$Sub_metering_1 <- as.numeric(power$Sub_metering_1)
 power$Sub_metering_2 <- as.numeric(power$Sub_metering_2)
 power$Sub_metering_3 <- as.numeric(power$Sub_metering_3)
 
-plot(power$'Date/Time',
+plot(power$datetime,
      power$Sub_metering_1,
      type = 'n',
      xlab = '',
      ylab = 'Energy sub metering')
-points(power$'Date/Time',
+points(power$datetime,
        power$Sub_metering_1,
        type = 'l')
-points(power$'Date/Time',
+points(power$datetime,
        power$Sub_metering_2,
        type = 'l',
        col = 'red')
-points(power$'Date/Time',
+points(power$datetime,
        power$Sub_metering_3,
        type = 'l',
        col = 'blue')
