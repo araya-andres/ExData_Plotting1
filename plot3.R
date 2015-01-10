@@ -1,5 +1,5 @@
 fname <- 'data//household_power_consumption.txt'
-output <- 'plot2.png'
+output <- 'plot3.png'
 startDate <- as.POSIXlt('2007-02-01')
 endDate <- as.POSIXlt('2007-02-03')
 
